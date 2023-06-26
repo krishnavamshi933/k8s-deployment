@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myproject-web-deployment
+  labels:
+    app: myproject
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: myproject
+  template:
+    metadata:
+      labels:
+        app: myproject
+    spec:
+      containers:
+        - name: web
+          image: krishnavamshi933/myprojectdir-web:latest
+          ports:
+            - containerPort: 8000
