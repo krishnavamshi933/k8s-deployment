@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myproject-db-deployment
+  labels:
+    app: myproject
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: myproject
+  template:
+    metadata:
+      labels:
+        app: myproject
+    spec:
+      containers:
+        - name: db
+          image: krishnavamshi933/postgres:latest
+          env:
+            - name: POSTGRES_PASSWORD
+              value: ubuntu
+          ports:
+            - containerPort: 5432
